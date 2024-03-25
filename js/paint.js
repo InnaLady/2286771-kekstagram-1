@@ -15,6 +15,8 @@ photoDescriptions.forEach(({ url, likes, comments }) => {
   userPicture.querySelector('.picture__comments').textContent = comments.length;
 });
 
-const appendChild = pictures.appendChild(picturesFragment);
+const appendChild = function () {
+  pictures.appendChild(picturesFragment);
+};
 appendChild();
 export { appendChild };
