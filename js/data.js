@@ -74,3 +74,5 @@ const createPhotoDescription = () => {
 
 const createPhotoDescriptions = () => Array.from({ length: 25 }, createPhotoDescription);
 export { createPhotoDescriptions };
+const createCommentsArray = () => Array.from({ length: 6 }, createComments);
+export {createCommentsArray};
