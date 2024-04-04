@@ -66,7 +66,29 @@ const appendComment = function () {
   comments.appendChild(commentsFragment);
 };
 appendComment();
-
-
 export { openUserModal };
 export { closeUserModal };
+
+const more = document.querySelector('.comments-loader');
+const commentCount = document.querySelector('.social__comment-count');
+const comment = document.querySelectorAll('.social__comment');
+
+const onload = function () {
+  for (let i = 5; i < comment.length; i++) {
+    comment[i].classList.add('hidden');
+  }
+};
+onload();
+
+let commentNumber = 5;
+commentCount.textContent = `${commentNumber} из ${comment.length}`;
+
+more.addEventListener('click', () => {
+  commentNumber += 1;
+  if (commentNumber <= comment.length) {
+    for (let i = 0; i < commentNumber; i++) {
+      comment[i].classList.remove('hidden');
+      commentCount.textContent = `${commentNumber} из ${comment.length}`;
+    }
+  }
+});
