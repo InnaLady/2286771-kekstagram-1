@@ -8,6 +8,7 @@ openUserModal();
 import { closeUserModal } from './big-picture.js';
 closeUserModal ();
 import './big-picture.js';
-import { selectImage } from './form.js';
-selectImage();
-
+import { openForm } from './form.js';
+openForm();
+import { closeForm } from './form.js';
+closeForm();
