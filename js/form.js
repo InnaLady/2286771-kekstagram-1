@@ -7,7 +7,8 @@ const uploadCancel = document.querySelector('#upload-cancel');
 const onFormKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    uploadOverlay.classList.remove('hidden');
+    uploadOverlay.classList.add('hidden');
+    uploadFile.value = '';
   }
 };
 
@@ -28,7 +29,8 @@ const closeForm = function () {
 
   uploadCancel.addEventListener('click', () => {
     uploadOverlay.classList.add('hidden');
-    document.body.classList.remove('modal-open');
+    uploadFile.value = '';
+
   });
 
   document.removeEventListener('keydown', onFormKeydown);

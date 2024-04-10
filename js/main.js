@@ -12,3 +12,4 @@ import { openForm } from './form.js';
 openForm();
 import { closeForm } from './form.js';
 closeForm();
+import './form.js';
