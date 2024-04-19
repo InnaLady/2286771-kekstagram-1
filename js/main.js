@@ -13,5 +13,8 @@ openForm();
 import { closeForm } from './form.js';
 closeForm();
 import './form.js';
-
+import { onload } from './form.js';
+onload();
+import { hashtagCheck } from './regexp.js';
+hashtagCheck();
 

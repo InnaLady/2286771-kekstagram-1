@@ -30,5 +30,5 @@ const hashtagCheck = function () {
 };
 
 hashtagCheck();
-
+export {hashtagCheck};
 

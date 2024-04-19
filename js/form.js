@@ -48,6 +48,7 @@ closeForm();
 export { openForm };
 export { closeForm };
 
+
 const onload = function () {
 
   const pristine = new Pristine(uploadForm);
@@ -64,4 +65,4 @@ const onload = function () {
 
 };
 onload();
-
+export { onload };
