@@ -52,10 +52,9 @@ export { closeForm };
 const onload = function () {
 
   const pristine = new Pristine(uploadForm);
-
+  const isValid = pristine.validate();
   uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    const isValid = pristine.validate();
 
     if (isValid) {
       uploadForm.submit();
