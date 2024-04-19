@@ -1,6 +1,5 @@
 import { isEscapeKey } from './util.js';
 
-const uploadForm = document.querySelector('.img-upload__form');
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadCancel = document.querySelector('#upload-cancel');
@@ -47,21 +46,3 @@ const closeForm = function () {
 closeForm();
 export { openForm };
 export { closeForm };
-
-
-const onload = function () {
-
-  const pristine = new Pristine(uploadForm);
-  const isValid = pristine.validate();
-  uploadForm.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-
-    if (isValid) {
-      uploadForm.submit();
-    }
-
-  });
-
-};
-onload();
-export { onload };
