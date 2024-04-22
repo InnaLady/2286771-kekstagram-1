@@ -1,4 +1,4 @@
-const textHashtags = document.querySelector('.text__hashtags');
+/*const textHashtags = document.querySelector('.text__hashtags');
 
 
 const hashtagCheck = function () {
@@ -21,3 +21,4 @@ const hashtagCheck = function () {
 hashtagCheck();
 export {hashtagCheck};
 
+*/

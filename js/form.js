@@ -1,4 +1,5 @@
 import { isEscapeKey } from './util.js';
+import {createPristine } from './validation.js';
 
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -31,7 +32,7 @@ const openForm = function () {
 };
 
 openForm();
-
+const uploadForm = document.querySelector('.img-upload__form');
 
 const closeForm = function () {
 
@@ -46,3 +47,10 @@ const closeForm = function () {
 closeForm();
 export { openForm };
 export { closeForm };
+
+uploadForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  if (createPristine) {
+    uploadForm.submit();
+  }
+});
