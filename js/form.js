@@ -6,7 +6,8 @@ const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadCancel = document.querySelector('#upload-cancel');
 const textDescription = document.querySelector('.text__description');
 const textHashtags = document.querySelector('.text__hashtags');
-
+const uploadForm = document.querySelector('.img-upload__form');
+const pristine = createPristine(uploadForm, textHashtags, textDescription);
 
 const onFormKeydown = (evt) => {
   if (textDescription === document.activeElement) {
@@ -32,7 +33,7 @@ const openForm = function () {
 };
 
 openForm();
-const uploadForm = document.querySelector('.img-upload__form');
+
 
 const closeForm = function () {
 
@@ -48,9 +49,10 @@ closeForm();
 export { openForm };
 export { closeForm };
 
+
 uploadForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  if (createPristine) {
+  if (pristine.validate()) {
     uploadForm.submit();
   }
 });

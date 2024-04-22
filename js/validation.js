@@ -39,7 +39,6 @@ const createPristine = (form, hashtagFieldNode, descriptionFieldNode) => {
 
   return pristine;
 };
-console.log(createPristine('#keks'));
 export { createPristine };
 /*const onload = function () {
 
