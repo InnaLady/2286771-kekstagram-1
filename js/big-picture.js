@@ -41,7 +41,7 @@ const commentCount = document.querySelector('.social__comment-count');
 const onModalBlockKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    modalBlock.classList.remove('hidden');
+    modalBlock.classList.add('hidden');
   }
 };
 const openUserModal = function () {
