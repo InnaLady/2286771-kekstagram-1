@@ -15,4 +15,5 @@ closeForm();
 import './form.js';
 import { updateScale } from './scale.js';
 updateScale ();
-import './effects.js';
+import { resetEffect } from './effects.js';
+resetEffect();

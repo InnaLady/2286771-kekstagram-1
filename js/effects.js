@@ -1,14 +1,61 @@
-const uploadPreview = document.querySelector('.img-upload__preview');
-const radioButton = document.querySelector('.effects__radio');
-const sliderElement = document.querySelector('.img-upload__effect-level');
-noUiSlider.create(sliderElement, {
-  range: {
+
+const effectsRadio = document.querySelectorAll('.effects__radio');
+const imgUploadPreview = document.querySelector('.img-upload__preview');
+const effectLevelSlider = document.querySelector('.effect-level__slider');
+const effectLevelValue = document.querySelector('.effect-level__value');
+const imgUploadEffectLevel = document.querySelector('.img-upload__effect-level');
+
+const effectsMap = {
+  chrome: {
+    filter: 'grayscale',
+    unit: '',
+    min: 0,
+    max: 1,
+    step: 0.1,
+  },
+  sepia: {
+    filter: 'sepia',
+    unit: '',
+    min: 0,
+    max: 1,
+    step: 0.1,
+  },
+  marvin: {
+    filter: 'invert',
+    unit: '%',
     min: 0,
     max: 100,
+    step: 1,
   },
-  start: 80,
-  step: 1,
-  connect: 'lower',
-});
+  phobos: {
+    filter: 'blur',
+    unit: 'px',
+    min: 0,
+    max: 3,
+    step: 0.1,
+  },
+  heat: {
+    filter: 'brightness',
+    unit: '',
+    min: 1,
+    max: 3,
+    step: 0.1,
+  },
+};
 
-export './effects.js';
+const resetEffect = function () {
+
+  noUiSlider.create(effectLevelSlider, {
+    start: 100,
+    range: {
+      min: 0,
+      max: 100,
+    },
+  });
+
+  effectLevelSlider.noUiSlider.on('update', () => {
+    valueElement.value = sliderElement.noUiSlider.get();
+  });
+};
+
+export { resetEffect };
