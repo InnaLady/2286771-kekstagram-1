@@ -40,24 +40,3 @@ const createPristine = (form, hashtagFieldNode, descriptionFieldNode) => {
   return pristine;
 };
 export { createPristine };
-/*const onload = function () {
-
-const uploadForm = document.querySelector('.img-upload__form');
-const textHashtags = document.querySelector('.text__hashtags');
-const textDescription = document.querySelector('.text__description');
-const pristine = new Pristine(uploadForm);
-const isValid = pristine.validate();
-
-  uploadForm.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    console.log('Сабмит');
-    if (hashtagCheck && isValid) {
-      console.log('Можно отправлять!');
-      //uploadForm.submit();
-    }
-
-  });
-
-};
-export { onload };
-*/

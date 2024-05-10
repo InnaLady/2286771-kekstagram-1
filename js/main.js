@@ -13,3 +13,7 @@ openForm();
 import { closeForm } from './form.js';
 closeForm();
 import './form.js';
+import { updateScale } from './scale.js';
+updateScale ();
+import { resetEffect } from './effects.js';
+resetEffect();
