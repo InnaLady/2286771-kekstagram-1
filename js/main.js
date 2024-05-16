@@ -17,3 +17,7 @@ import { updateScale } from './scale.js';
 updateScale ();
 import { resetEffect } from './effects.js';
 resetEffect();
+import {getData} from './api.js';
+getData();
+import { setUserFormSubmit } from './form.js';
+setUserFormSubmit();
