@@ -22,7 +22,8 @@ import { setUserFormSubmit } from './form.js';
 import { photoGallery } from './paint.js';
 photoGallery();
 import {showAlert} from './util.js';
-
+import { fullSizeModalHandler } from './big-picture.js';
+fullSizeModalHandler ();
 getData()
   .then(() => {
     photoGallery();

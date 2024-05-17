@@ -70,16 +70,10 @@ const openUserModal = function () {
 
 
 const closeUserModal = function () {
-  cancel.addEventListener('click', () => {
-    modalBlock.classList.add('hidden');
-    document.body.classList.remove('modal-open');
-  });
-
+  modalBlock.classList.add('hidden');
+  document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalBlockKeydown);
 };
-
-export { openUserModal };
-export { closeUserModal };
 
 more.addEventListener('click', () => {
   let commentNumber = 5;
@@ -92,3 +86,13 @@ more.addEventListener('click', () => {
   }
 });
 
+const fullSizeModalHandler = function () {
+  cancel.addEventListener('click', () => {
+    closeUserModal();
+
+  });
+};
+
+export { fullSizeModalHandler };
+export { openUserModal };
+export { closeUserModal };
