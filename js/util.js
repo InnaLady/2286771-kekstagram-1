@@ -43,7 +43,7 @@ const showAlert = (message) => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
 };
-
+showAlert();
 export {getRandomIntInclusive};
 export {getRandomIdfromRangeGenerator};
 export {isEscapeKey};

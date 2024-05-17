@@ -18,6 +18,20 @@ updateScale ();
 import { resetEffect } from './effects.js';
 resetEffect();
 import {getData} from './api.js';
-getData();
 import { setUserFormSubmit } from './form.js';
-setUserFormSubmit();
+import { photoGallery } from './paint.js';
+photoGallery();
+import {showAlert} from './util.js';
+
+getData()
+  .then(() => {
+    photoGallery();
+  })
+  .catch(
+    (err) => {
+      showAlert(err.message);
+    }
+  );
+
+
+setUserFormSubmit(closeUserModal);

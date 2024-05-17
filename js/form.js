@@ -1,6 +1,7 @@
 import { isEscapeKey, showAlert } from './util.js';
 import { createPristine } from './validation.js';
 import { sendData } from './api.js';
+import { closeUserModal } from './big-picture.js';
 
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -50,12 +51,18 @@ closeForm();
 export { openForm };
 export { closeForm };
 
-const setUserFormSubmit = (onSuccess) => {
+const setUserFormSubmit = () => {
+
   uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
+
     if (pristine.validate()) {
+
       sendData(new FormData(evt.target))
-        .then(onSuccess)
+        // .then(onSuccess)
+        .then(() => {
+          closeUserModal();
+        })
         .catch((err) => {
           showAlert(err.message);
         });
@@ -63,5 +70,5 @@ const setUserFormSubmit = (onSuccess) => {
     }
   });
 };
-
-export {setUserFormSubmit};
+setUserFormSubmit ();
+export { setUserFormSubmit };
