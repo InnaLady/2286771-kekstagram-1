@@ -70,9 +70,12 @@ const openUserModal = function () {
 
 
 const closeUserModal = function () {
-  modalBlock.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onModalBlockKeydown);
+  cancel.addEventListener('click', () => {
+    closeUserModal();
+    modalBlock.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+    document.removeEventListener('keydown', onModalBlockKeydown);
+  });
 };
 
 more.addEventListener('click', () => {
@@ -85,6 +88,8 @@ more.addEventListener('click', () => {
     }
   }
 });
-closeUserModal();
-export { closeUserModal};
-export {openUserModal};
+
+
+export { openUserModal };
+export { closeUserModal };
+
