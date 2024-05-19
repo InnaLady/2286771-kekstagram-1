@@ -1,7 +1,7 @@
 import { isEscapeKey, showAlert } from './util.js';
 import { createPristine } from './validation.js';
 import { sendData } from './api.js';
-import { closeUserModal } from './big-picture.js';
+
 
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -39,12 +39,9 @@ openForm();
 
 const closeForm = function () {
 
-
-  uploadCancel.addEventListener('click', () => {
-    uploadOverlay.classList.add('hidden');
-    uploadFile.value = '';
-    document.removeEventListener('keydown', onFormKeydown);
-  });
+  uploadOverlay.classList.add('hidden');
+  uploadFile.value = '';
+  document.removeEventListener('keydown', onFormKeydown);
 };
 
 closeForm();
@@ -59,9 +56,9 @@ const setUserFormSubmit = () => {
     if (pristine.validate()) {
 
       sendData(new FormData(evt.target))
-        // .then(onSuccess)
+
         .then(() => {
-          closeUserModal();
+          closeForm();
         })
         .catch((err) => {
           showAlert(err.message);
@@ -70,5 +67,16 @@ const setUserFormSubmit = () => {
     }
   });
 };
-setUserFormSubmit ();
+
+setUserFormSubmit();
 export { setUserFormSubmit };
+
+
+const fullSizeModalHandler = function () {
+  uploadCancel.addEventListener('click', () => {
+    closeForm();
+
+  });
+};
+
+fullSizeModalHandler();

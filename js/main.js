@@ -19,13 +19,11 @@ import { resetEffect } from './effects.js';
 resetEffect();
 import {getData} from './api.js';
 import { setUserFormSubmit } from './form.js';
-import { photoGallery } from './paint.js';
-photoGallery();
 import {showAlert} from './util.js';
 
 getData()
   .then(() => {
-    photoGallery();
+  appendChild();
   })
   .catch(
     (err) => {
@@ -34,4 +32,5 @@ getData()
   );
 
 
-setUserFormSubmit(closeUserModal);
+setUserFormSubmit(closeForm);
+
