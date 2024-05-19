@@ -3,6 +3,7 @@ import { createPristine } from './validation.js';
 import { sendData } from './api.js';
 
 
+
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadCancel = document.querySelector('#upload-cancel');
@@ -42,6 +43,9 @@ const closeForm = function () {
   uploadOverlay.classList.add('hidden');
   uploadFile.value = '';
   document.removeEventListener('keydown', onFormKeydown);
+  uploadOverlay.classList.add('hidden');
+  uploadFile.value = '';
+  document.removeEventListener('keydown', onFormKeydown);
 };
 
 closeForm();
@@ -58,6 +62,7 @@ const setUserFormSubmit = () => {
       sendData(new FormData(evt.target))
 
         .then(() => {
+          closeForm();
           closeForm();
         })
         .catch((err) => {
