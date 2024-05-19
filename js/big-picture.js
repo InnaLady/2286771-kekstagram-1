@@ -85,3 +85,6 @@ more.addEventListener('click', () => {
     }
   }
 });
+closeUserModal();
+export { closeUserModal};
+export {openUserModal};
