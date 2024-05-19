@@ -14,16 +14,16 @@ import { closeForm } from './form.js';
 closeForm();
 import './form.js';
 import { updateScale } from './scale.js';
-updateScale ();
+updateScale();
 import { resetEffect } from './effects.js';
 resetEffect();
-import {getData} from './api.js';
+import { getData } from './api.js';
 import { setUserFormSubmit } from './form.js';
-import {showAlert} from './util.js';
+import { showAlert } from './util.js';
 
 getData()
   .then(() => {
-  appendChild();
+    appendChild();
   })
   .catch(
     (err) => {
