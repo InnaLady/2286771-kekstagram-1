@@ -8,17 +8,13 @@ openUserModal();
 import { closeUserModal } from './big-picture.js';
 closeUserModal();
 import './big-picture.js';
-import { openForm } from './form.js';
+import { openForm, closeForm, setUserFormSubmit } from './form.js';
 openForm();
-import { closeForm } from './form.js';
-closeForm();
-import './form.js';
 import { updateScale } from './scale.js';
 updateScale();
 import { resetEffect } from './effects.js';
 resetEffect();
 import { getData } from './api.js';
-import { setUserFormSubmit } from './form.js';
 import { showAlert } from './util.js';
 
 getData()

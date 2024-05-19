@@ -2,8 +2,6 @@ import { isEscapeKey, showAlert } from './util.js';
 import { createPristine } from './validation.js';
 import { sendData } from './api.js';
 
-
-
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadCancel = document.querySelector('#upload-cancel');
@@ -35,9 +33,6 @@ const openForm = function () {
   });
 };
 
-openForm();
-
-
 const closeForm = function () {
 
   uploadOverlay.classList.add('hidden');
@@ -48,7 +43,6 @@ const closeForm = function () {
   document.removeEventListener('keydown', onFormKeydown);
 };
 
-closeForm();
 export { openForm };
 export { closeForm };
 
@@ -63,7 +57,6 @@ const setUserFormSubmit = () => {
 
         .then(() => {
           closeForm();
-          closeForm();
         })
         .catch((err) => {
           showAlert(err.message);
@@ -73,7 +66,6 @@ const setUserFormSubmit = () => {
   });
 };
 
-setUserFormSubmit();
 export { setUserFormSubmit };
 
 
