@@ -58,5 +58,4 @@ export {
   showUploadSuccess
 };
 
-showUploadError();
-showUploadSuccess();
+
