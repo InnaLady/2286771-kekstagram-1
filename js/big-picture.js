@@ -71,15 +71,12 @@ const openUserModal = function () {
 
 const closeUserModal = function () {
   cancel.addEventListener('click', () => {
+    closeUserModal();
     modalBlock.classList.add('hidden');
     document.body.classList.remove('modal-open');
+    document.removeEventListener('keydown', onModalBlockKeydown);
   });
-
-  document.removeEventListener('keydown', onModalBlockKeydown);
 };
-
-export { openUserModal };
-export { closeUserModal };
 
 more.addEventListener('click', () => {
   let commentNumber = 5;
@@ -91,4 +88,8 @@ more.addEventListener('click', () => {
     }
   }
 });
+
+
+export { openUserModal };
+export { closeUserModal };
 

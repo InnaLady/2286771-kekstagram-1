@@ -7,6 +7,7 @@ const photoDescriptions = createPhotoDescriptions();
 
 const picturesFragment = document.createDocumentFragment();
 
+
 photoDescriptions.forEach(({ url, likes, comments, description }) => {
   const userPicture = pictureTemplate.cloneNode(true);
   pictures.appendChild(userPicture);
@@ -19,7 +20,9 @@ photoDescriptions.forEach(({ url, likes, comments, description }) => {
 
 const appendChild = function () {
   pictures.appendChild(picturesFragment);
+
 };
 appendChild();
+
 export { appendChild };
-export {photoDescriptions};
+

@@ -1,5 +1,11 @@
-import { isEscapeKey } from './util.js';
-import {createPristine } from './validation.js';
+import { isEscapeKey, showAlert } from './util.js';
+import { createPristine } from './validation.js';
+import { sendData } from './api.js';
+
+const SubmitButtonText = {
+  IDLE: 'Сохранить',
+  SENDING: 'Сохраняю...'
+};
 
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -8,6 +14,9 @@ const textDescription = document.querySelector('.text__description');
 const textHashtags = document.querySelector('.text__hashtags');
 const uploadForm = document.querySelector('.img-upload__form');
 const pristine = createPristine(uploadForm, textHashtags, textDescription);
+const submitButton = uploadForm.querySelector('.img-upload__submit');
+import { showUploadSuccess, showUploadError } from './message.js';
+
 
 const onFormKeydown = (evt) => {
   if (textDescription === document.activeElement) {
@@ -32,27 +41,61 @@ const openForm = function () {
   });
 };
 
-openForm();
-
-
 const closeForm = function () {
 
-
-  uploadCancel.addEventListener('click', () => {
-    uploadOverlay.classList.add('hidden');
-    uploadFile.value = '';
-    document.removeEventListener('keydown', onFormKeydown);
-  });
+  uploadOverlay.classList.add('hidden');
+  uploadFile.value = '';
+  document.removeEventListener('keydown', onFormKeydown);
+  uploadOverlay.classList.add('hidden');
+  uploadFile.value = '';
+  document.removeEventListener('keydown', onFormKeydown);
 };
 
-closeForm();
 export { openForm };
 export { closeForm };
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
 
-uploadForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  if (pristine.validate()) {
-    uploadForm.submit();
-  }
-});
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
+
+const setUserFormSubmit = () => {
+
+  uploadForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    if (pristine.validate()) {
+      blockSubmitButton();
+      sendData(new FormData(evt.target))
+
+        .then(() => {
+          showUploadSuccess();
+          closeForm();
+        })
+        .catch((err) => {
+          showAlert(err.message);
+          showUploadError();
+        }
+        )
+        .finally(unblockSubmitButton);
+    }
+  });
+};
+
+export { setUserFormSubmit };
+
+
+const fullSizeModalHandler = function () {
+  uploadCancel.addEventListener('click', () => {
+    closeForm();
+
+  });
+};
+
+fullSizeModalHandler();
