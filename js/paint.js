@@ -22,7 +22,7 @@ const appendChild = function () {
   pictures.appendChild(picturesFragment);
 
 };
-appendChild();
+
 
 export { appendChild };
 

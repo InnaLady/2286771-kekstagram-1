@@ -4,7 +4,8 @@ const getRandomIntInclusive = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min); // Максимум и минимум включаются
 };
-getRandomIntInclusive();
+const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, elements.length - 1)];
+
 
 function getRandomIdfromRangeGenerator(min, max) {
   const previousValues = [];
@@ -48,4 +49,5 @@ export {getRandomIntInclusive};
 export {getRandomIdfromRangeGenerator};
 export {isEscapeKey};
 export {showAlert };
+export { getRandomArrayElement };
 

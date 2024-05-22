@@ -1,6 +1,8 @@
 import { isEscapeKey, showAlert } from './util.js';
 import { createPristine } from './validation.js';
 import { sendData } from './api.js';
+import { showUploadSuccess, showUploadError } from './message.js';
+
 
 const SubmitButtonText = {
   IDLE: 'Сохранить',
@@ -15,7 +17,9 @@ const textHashtags = document.querySelector('.text__hashtags');
 const uploadForm = document.querySelector('.img-upload__form');
 const pristine = createPristine(uploadForm, textHashtags, textDescription);
 const submitButton = uploadForm.querySelector('.img-upload__submit');
-import { showUploadSuccess, showUploadError } from './message.js';
+const filterDefault = document.getElementById('filter-default');
+const filterRandom = document.getElementById('filter-random');
+import { showDefaultImages, showRandomImages } from './filter.js';
 
 
 const onFormKeydown = (evt) => {
@@ -64,6 +68,17 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
+filterDefault.addEventListener('click', showDefaultImages);
+
+const setRandomClick = () => {
+  filterRandom.addEventListener('click', () => {
+    showRandomImages();
+    console.log('ksdjhfk ');
+
+  });
+};
+setRandomClick();
+
 
 const setUserFormSubmit = () => {
 
@@ -88,7 +103,7 @@ const setUserFormSubmit = () => {
   });
 };
 
-export { setUserFormSubmit };
+export { setUserFormSubmit, setRandomClick };
 
 
 const fullSizeModalHandler = function () {
@@ -99,3 +114,4 @@ const fullSizeModalHandler = function () {
 };
 
 fullSizeModalHandler();
+
