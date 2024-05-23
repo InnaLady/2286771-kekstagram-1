@@ -1,19 +1,16 @@
-import { appendChild } from './paint.js';
+
 const pictures = [];
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
-
+console.log
 function showDefaultImages() {
-  appendChild(pictures);
+
+  showImages(pictures);
 }
 
 function showRandomImages() {
-  const randomPictures = shuffle([...pictures]).slice(0, 10);
-  appendChild(randomPictures);
+  const randomPictures = shuffle([...pictures]);
+  showImages(randomPictures);
 }
-
-
-export {showDefaultImages, showRandomImages};
-

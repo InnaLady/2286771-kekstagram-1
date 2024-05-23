@@ -17,9 +17,6 @@ const textHashtags = document.querySelector('.text__hashtags');
 const uploadForm = document.querySelector('.img-upload__form');
 const pristine = createPristine(uploadForm, textHashtags, textDescription);
 const submitButton = uploadForm.querySelector('.img-upload__submit');
-const filterDefault = document.getElementById('filter-default');
-const filterRandom = document.getElementById('filter-random');
-import { showDefaultImages, showRandomImages } from './filter.js';
 
 
 const onFormKeydown = (evt) => {
@@ -68,18 +65,6 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
-filterDefault.addEventListener('click', showDefaultImages);
-
-const setRandomClick = () => {
-  filterRandom.addEventListener('click', () => {
-    showRandomImages();
-    console.log('ksdjhfk ');
-
-  });
-};
-setRandomClick();
-
-
 const setUserFormSubmit = () => {
 
   uploadForm.addEventListener('submit', (evt) => {
@@ -103,7 +88,7 @@ const setUserFormSubmit = () => {
   });
 };
 
-export { setUserFormSubmit, setRandomClick };
+export { setUserFormSubmit };
 
 
 const fullSizeModalHandler = function () {
