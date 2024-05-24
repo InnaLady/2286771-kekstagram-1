@@ -1,6 +1,8 @@
 import { isEscapeKey, showAlert } from './util.js';
 import { createPristine } from './validation.js';
 import { sendData } from './api.js';
+import { showUploadSuccess, showUploadError } from './message.js';
+
 
 const SubmitButtonText = {
   IDLE: 'Сохранить',
@@ -15,7 +17,6 @@ const textHashtags = document.querySelector('.text__hashtags');
 const uploadForm = document.querySelector('.img-upload__form');
 const pristine = createPristine(uploadForm, textHashtags, textDescription);
 const submitButton = uploadForm.querySelector('.img-upload__submit');
-import { showUploadSuccess, showUploadError } from './message.js';
 
 
 const onFormKeydown = (evt) => {
@@ -64,7 +65,6 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
-
 const setUserFormSubmit = () => {
 
   uploadForm.addEventListener('submit', (evt) => {
@@ -99,3 +99,4 @@ const fullSizeModalHandler = function () {
 };
 
 fullSizeModalHandler();
+

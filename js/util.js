@@ -4,7 +4,8 @@ const getRandomIntInclusive = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min); // Максимум и минимум включаются
 };
-getRandomIntInclusive();
+
+
 
 function getRandomIdfromRangeGenerator(min, max) {
   const previousValues = [];
@@ -44,8 +45,18 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+debounce();
+
 export {getRandomIntInclusive};
 export {getRandomIdfromRangeGenerator};
 export {isEscapeKey};
 export {showAlert };
+
 
