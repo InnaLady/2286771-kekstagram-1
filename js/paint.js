@@ -22,16 +22,24 @@ function showImages() {
   return photoDescriptions;
 }
 
-const filterDefault = document.getElementById('filter-default');
-const picturestoRemove = document.querySelectorAll('.picture');
-
-filterDefault.addEventListener('click', () => {
-console.log(picturestoRemove);
-  picturestoRemove.forEach((element) => {
-    element.classList.add('hidden');
+const showDefaultImages = () => {
+  const filterDefault = document.getElementById('filter-default');
+  const picturestoRemove = document.querySelectorAll('.picture');
+  filterDefault.addEventListener('click', () => {
+    picturestoRemove.forEach((element) => {
+      element.classList.remove('hidden');
+    });
   });
-});
+};
 
-export { showImages };
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function showRandomImages() {
+  const randomPictures = shuffle([...pictures]);
+  showImages(randomPictures);
+}
+export { showImages, showDefaultImages };
 
 

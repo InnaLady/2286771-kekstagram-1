@@ -1,6 +1,6 @@
 import { createPhotoDescriptions } from './data.js';
 createPhotoDescriptions();
-import { showImages } from './paint.js';
+import { showImages, showDefaultImages } from './paint.js';
 import { openUserModal, closeUserModal } from './big-picture.js';
 openUserModal();
 closeUserModal();
@@ -18,6 +18,7 @@ const imgFilters = document.querySelector('.img-filters');
 getData()
   .then((pictures) => {
     showImages(pictures);
+    showDefaultImages();
     imgFilters.classList.remove('img-filters--inactive');
 
   })
