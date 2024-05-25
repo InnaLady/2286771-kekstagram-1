@@ -48,6 +48,7 @@ const openUserModal = function () {
 
   links.forEach((link) => {
     link.addEventListener('click', () => {
+      console.log(link);
       for (let i = 5; i < comment.length; i++) {
         comment[i].classList.add('hidden');
       }

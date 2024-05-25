@@ -1,6 +1,6 @@
 import { createPhotoDescriptions } from './data.js';
 createPhotoDescriptions();
-import { showImages, showDefaultImages, showRandomImages, showPopularImages } from './paint.js';
+import { appendChild, showDefaultImages, showRandomImages, showPopularImages } from './paint.js';
 import { openUserModal, closeUserModal } from './big-picture.js';
 openUserModal();
 closeUserModal();
@@ -13,11 +13,11 @@ resetEffect();
 import { getData } from './api.js';
 import { showAlert } from './util.js';
 const imgFilters = document.querySelector('.img-filters');
-
+import './preview.js';
 
 getData()
   .then((pictures) => {
-    showImages(pictures);
+    appendChild(pictures);
     showDefaultImages();
     showRandomImages ();
     showPopularImages();
