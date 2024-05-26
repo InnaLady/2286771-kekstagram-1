@@ -1,4 +1,4 @@
-import './paint.js';
+import {renderPictures } from './paint.js';
 import { createCommentsArray } from './data.js';
 import { isEscapeKey } from './util.js';
 
@@ -16,23 +16,19 @@ pictureComment.forEach(({ avatar, messages, name }) => {
   userComment.querySelector('.social__picture').alt = name;
 });
 
-
+console.log(pictureComment);
 const appendComment = function () {
   comments.appendChild(commentsFragment);
 };
-
-appendComment();
 
 
 const modalBlock = document.querySelector('.big-picture');
 const block = document.querySelector('.big-picture__img');
 const picture = block.querySelector('img');
-const links = document.querySelectorAll('.picture');
 const cancel = document.querySelector('.big-picture__cancel');
 const likes = document.querySelector('.likes-count');
 const thumbnailsLikes = document.querySelectorAll('.picture__likes');
 const commentsCount = document.querySelector('.comments-count');
-const thumbnailsComments = document.querySelector('.picture__comments');
 const caption = document.querySelector('.social__caption');
 const comment = document.querySelectorAll('.social__comment');
 const more = document.querySelector('.comments-loader');
@@ -44,8 +40,11 @@ const onModalBlockKeydown = (evt) => {
     modalBlock.classList.add('hidden');
   }
 };
-const openUserModal = function () {
 
+
+const openUserModal = function () {
+  const links = document.querySelectorAll('.picture');
+  const thumbnailsComments = document.querySelector('.picture__comments');
   links.forEach((link) => {
     link.addEventListener('click', () => {
       console.log(link);
@@ -92,5 +91,5 @@ more.addEventListener('click', () => {
 
 
 export { openUserModal };
-export { closeUserModal };
+export { closeUserModal, appendComment };
 

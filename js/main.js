@@ -1,9 +1,9 @@
-import { createPhotoDescriptions } from './data.js';
+import { createPhotoDescriptions, createCommentsArray } from './data.js';
 createPhotoDescriptions();
 import { renderPictures, showDefaultImages, showRandomImages, showPopularImages } from './paint.js';
-import { openUserModal, closeUserModal } from './big-picture.js';
-openUserModal();
+import { openUserModal, closeUserModal, appendComment} from './big-picture.js';
 closeUserModal();
+appendComment();
 import { openForm, closeForm, setUserFormSubmit } from './form.js';
 openForm();
 import { updateScale } from './scale.js';
@@ -16,13 +16,15 @@ const imgFilters = document.querySelector('.img-filters');
 import './preview.js';
 
 getData()
-  .then((pictures) => {
-    renderPictures(pictures);
+  .then((links) => {
+    renderPictures(links);
     showDefaultImages();
     showRandomImages ();
     showPopularImages();
     imgFilters.classList.remove('img-filters--inactive');
-
+    openUserModal();
+    appendComment();
+    createCommentsArray();
   })
   .catch(
     (err) => {
