@@ -1,28 +1,23 @@
-import { createPhotoDescriptions } from './data.js';
 const SIMILAR_WIZARD_COUNT = -10;
-const pictures = document.querySelector('.pictures');
+const picturesList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const photoDescriptions = createPhotoDescriptions();
 
-const picturesFragment = document.createDocumentFragment();
+const renderPictures = (pictures) => {
 
+  const picturesFragment = document.createDocumentFragment();
 
-photoDescriptions.forEach(({ url, likes, comments, description }) => {
-  const userPicture = pictureTemplate.cloneNode(true);
-  pictures.appendChild(userPicture);
-  userPicture.querySelector('.picture__img').src = url;
-  userPicture.querySelector('.picture__likes').textContent = likes;
-  userPicture.querySelector('.picture__comments').textContent = comments.length;
-  userPicture.querySelector('.picture__img').alt = description;
+  pictures.forEach(({ url, likes, comments, description }) => {
+    const userPicture = pictureTemplate.cloneNode(true);
 
-});
-
-const appendChild = function () {
-  pictures.appendChild(picturesFragment);
-
+    userPicture.querySelector('.picture__img').src = url;
+    userPicture.querySelector('.picture__likes').textContent = likes;
+    userPicture.querySelector('.picture__comments').textContent = comments.length;
+    userPicture.querySelector('.picture__img').alt = description;
+    picturesFragment.appendChild(userPicture);
+  });
+  picturesList.appendChild(picturesFragment);
 };
-appendChild();
 
 
 const showDefaultImages = () => {
@@ -39,33 +34,40 @@ const showDefaultImages = () => {
 function showRandomImages() {
   const filterRandom = document.getElementById('filter-random');
   filterRandom.addEventListener('click', () => {
-    const picturesList = document.querySelectorAll('.picture');
-    picturesList.forEach((element) => {
+
+    const picturesAll = document.querySelectorAll('.picture');
+    picturesAll.forEach((element) => {
       element.classList.remove('hidden');
     });
-    const shuffledPictures = Array.from(picturesList).sort(() => Math.random() - 0.5);
+    const shuffledPictures = Array.from(picturesAll).sort(() => Math.random() - 0.5);
     const randomPictures = shuffledPictures.slice().slice(0, SIMILAR_WIZARD_COUNT);
     randomPictures.forEach((element) => {
       element.classList.add('hidden');
+
     });
   });
 }
 
-function showPopularImages() {
-  const filterPopular = document.getElementById('filter-discussed');
-  filterPopular.addEventListener('click', () => {
-    const picturesList = document.querySelectorAll('.picture');
-    picturesList.forEach((element) => {
-      element.classList.remove('hidden');
-    });
-    const picturesArray = Array.from(picturesList);
-    const popularPictures = picturesArray.sort((a, b) => b.comments - a.comments);
+const showPopularImages = () => {
+  const list = document.querySelector('.pictures');
+  const items = [...list.querySelectorAll('.picture')];
+  const btn = document.getElementById('filter-discussed');
+  const comments = (item) => item.querySelector('.picture__comments').textContent;
 
+  const popularPictures = items.sort((a, b) => comments(b) - comments(a));
+  items.forEach((item) => list.appendChild(item));
+  btn.addEventListener('click', () => {
+    const picturesAll = document.querySelectorAll('.picture');
+    picturesAll.forEach((element) => {
+      element.classList.add('hidden');
+    });
+    showPopularImages();
     popularPictures.forEach((element) => {
       element.classList.remove('hidden');
     });
+
   });
-}
-export { appendChild, showDefaultImages, showRandomImages, showPopularImages };
+};
+export { renderPictures, showDefaultImages, showRandomImages, showPopularImages };
 
 

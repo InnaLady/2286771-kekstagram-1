@@ -1,6 +1,6 @@
 import { createPhotoDescriptions } from './data.js';
 createPhotoDescriptions();
-import { appendChild, showDefaultImages, showRandomImages, showPopularImages } from './paint.js';
+import { renderPictures, showDefaultImages, showRandomImages, showPopularImages } from './paint.js';
 import { openUserModal, closeUserModal } from './big-picture.js';
 openUserModal();
 closeUserModal();
@@ -17,7 +17,7 @@ import './preview.js';
 
 getData()
   .then((pictures) => {
-    appendChild(pictures);
+    renderPictures(pictures);
     showDefaultImages();
     showRandomImages ();
     showPopularImages();
