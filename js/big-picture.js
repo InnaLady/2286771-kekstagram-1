@@ -1,4 +1,4 @@
-import {renderPictures } from './paint.js';
+
 import { createCommentsArray } from './data.js';
 import { isEscapeKey } from './util.js';
 
@@ -16,7 +16,7 @@ pictureComment.forEach(({ avatar, messages, name }) => {
   userComment.querySelector('.social__picture').alt = name;
 });
 
-console.log(pictureComment);
+
 const appendComment = function () {
   comments.appendChild(commentsFragment);
 };
@@ -24,7 +24,7 @@ const appendComment = function () {
 
 const modalBlock = document.querySelector('.big-picture');
 const block = document.querySelector('.big-picture__img');
-const picture = block.querySelector('img');
+const image = block.querySelector('img');
 const cancel = document.querySelector('.big-picture__cancel');
 const likes = document.querySelector('.likes-count');
 const thumbnailsLikes = document.querySelectorAll('.picture__likes');
@@ -43,11 +43,10 @@ const onModalBlockKeydown = (evt) => {
 
 
 const openUserModal = function () {
-  const links = document.querySelectorAll('.picture');
+  const picture = document.querySelectorAll('.picture');
   const thumbnailsComments = document.querySelector('.picture__comments');
-  links.forEach((link) => {
+  picture.forEach((link) => {
     link.addEventListener('click', () => {
-      console.log(link);
       for (let i = 5; i < comment.length; i++) {
         comment[i].classList.add('hidden');
       }
@@ -56,7 +55,7 @@ const openUserModal = function () {
       modalBlock.classList.remove('hidden');
       document.body.classList.add('modal-open');
       const thumbnail = link.querySelector('.picture__img');
-      picture.src = thumbnail.src;
+      image.src = thumbnail.src;
       likes.textContent = thumbnailsLikes.textContent;
       commentsCount.textContent = thumbnailsComments.textContent;
       caption.textContent = thumbnail.alt;
