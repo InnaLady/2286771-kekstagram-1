@@ -2,6 +2,9 @@ const SIMILAR_WIZARD_COUNT = -10;
 const picturesList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 import { getRandomIdfromRangeGenerator } from './util.js';
+const defaultBtn = document.getElementById('filter-default');
+const randomBtn = document.getElementById('filter-random');
+const popularBtn = document.getElementById('filter-discussed');
 
 const renderPictures = (items) => {
 
@@ -20,12 +23,15 @@ const renderPictures = (items) => {
 };
 
 const showDefaultImages = () => {
-  const filterDefault = document.getElementById('filter-default');
   const picture = document.querySelectorAll('.picture');
-  filterDefault.addEventListener('click', () => {
+  const pictureList = document.querySelector('.pictures');
+  defaultBtn.addEventListener('click', () => {
+
+    picture.forEach((item) => pictureList.appendChild(item));
     picture.forEach((element) => {
       element.classList.remove('hidden');
     });
+
   });
 };
 
@@ -41,8 +47,8 @@ function shuffleArray(array) {
 
 
 function showRandomImages() {
-  const filterRandom = document.getElementById('filter-random');
-  filterRandom.addEventListener('click', () => {
+
+  randomBtn.addEventListener('click', () => {
 
     const picture = document.querySelectorAll('.picture');
     picture.forEach((element) => {
@@ -61,23 +67,36 @@ function showRandomImages() {
 const showPopularImages = () => {
   const pictureList = document.querySelector('.pictures');
   const picture = [...pictureList.querySelectorAll('.picture')];
-  const btn = document.getElementById('filter-discussed');
+
   const comments = (item) => item.querySelector('.picture__comments').textContent;
 
   const popularPictures = picture.sort((a, b) => comments(b) - comments(a));
-  picture.forEach((item) => pictureList.appendChild(item));
-  btn.addEventListener('click', () => {
 
-    picture.forEach((element) => {
-      element.classList.add('hidden');
-    });
-    showPopularImages();
+  popularBtn.addEventListener('click', (evt) => {
+    picture.forEach((item) => pictureList.appendChild(item));
+    evt.target.classList.add('img-filters__button--active');
     popularPictures.forEach((element) => {
       element.classList.remove('hidden');
     });
 
   });
 };
+
+function handleButtonClick(event) {
+
+  defaultBtn.classList.remove('img-filters__button--active');
+  randomBtn.classList.remove('img-filters__button--active');
+  popularBtn.classList.remove('img-filters__button--active');
+
+  event.target.classList.add('img-filters__button--active');
+}
+
+
+defaultBtn.addEventListener('click', handleButtonClick);
+randomBtn.addEventListener('click', handleButtonClick);
+popularBtn.addEventListener('click', handleButtonClick);
+
+
 export { renderPictures, showDefaultImages, showRandomImages, showPopularImages };
 
 

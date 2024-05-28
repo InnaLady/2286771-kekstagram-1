@@ -11,16 +11,22 @@ updateScale();
 import { resetEffect } from './effects.js';
 resetEffect();
 import { getData } from './api.js';
-import { showAlert } from './util.js';
+import { showAlert, debounce } from './util.js';
 const imgFilters = document.querySelector('.img-filters');
 import './preview.js';
+
+const RERENDER_DELAY = 2500;
+const debouncedImages = debounce(() => {
+  showPopularImages();
+  showDefaultImages();
+  showRandomImages();
+}, RERENDER_DELAY);
+
 
 getData()
   .then((links) => {
     renderPictures(links);
-    showDefaultImages();
-    showRandomImages ();
-    showPopularImages();
+    debouncedImages();
     imgFilters.classList.remove('img-filters--inactive');
     openUserModal();
     appendComment();
