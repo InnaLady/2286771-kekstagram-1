@@ -44,8 +44,9 @@ function showRandomImages() {
       element.classList.remove('hidden');
     });
     const randomIndex = getRandomIdfromRangeGenerator(0, picture.length - 1);
-    const randomPicturesCount = Math.min(SIMILAR_WIZARD_COUNT, picture.length);
-    const randomPictures = Array.from({ length: randomPicturesCount + 5}, () => picture[randomIndex()]);
+    const randomPicturesCount = Math.min(picture.length - SIMILAR_WIZARD_COUNT, picture.length);
+
+    const randomPictures = Array.from({ length: randomPicturesCount }, () => picture[randomIndex()]);
 
     randomPictures.forEach((element) => {
       element.classList.add('hidden');
