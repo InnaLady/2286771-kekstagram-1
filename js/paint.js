@@ -1,10 +1,11 @@
-const SIMILAR_WIZARD_COUNT = -10;
+const SIMILAR_WIZARD_COUNT = 10;
 const picturesList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 import { getRandomIdfromRangeGenerator } from './util.js';
 const defaultBtn = document.getElementById('filter-default');
 const randomBtn = document.getElementById('filter-random');
 const popularBtn = document.getElementById('filter-discussed');
+
 
 const renderPictures = (items) => {
 
@@ -36,31 +37,20 @@ const showDefaultImages = () => {
 };
 
 
-function shuffleArray(array) {
-  const shuffledArray = [...array];
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = getRandomIdfromRangeGenerator(0, i);
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-  return shuffledArray;
-}
-
-
 function showRandomImages() {
-
   randomBtn.addEventListener('click', () => {
-
     const picture = document.querySelectorAll('.picture');
     picture.forEach((element) => {
       element.classList.remove('hidden');
     });
-
-    const shuffledPictures = shuffleArray(Array.from(picture));
-    const randomPictures = shuffledPictures.slice(0, SIMILAR_WIZARD_COUNT);
+    const randomIndex = getRandomIdfromRangeGenerator(0, picture.length - 1);
+    const randomPicturesCount = Math.min(SIMILAR_WIZARD_COUNT, picture.length);
+    const randomPictures = Array.from({ length: randomPicturesCount + 5}, () => picture[randomIndex()]);
 
     randomPictures.forEach((element) => {
       element.classList.add('hidden');
     });
+
   });
 }
 
@@ -73,6 +63,7 @@ const showPopularImages = () => {
   const popularPictures = picture.sort((a, b) => comments(b) - comments(a));
 
   popularBtn.addEventListener('click', (evt) => {
+
     picture.forEach((item) => pictureList.appendChild(item));
     evt.target.classList.add('img-filters__button--active');
     popularPictures.forEach((element) => {
@@ -80,6 +71,7 @@ const showPopularImages = () => {
     });
 
   });
+
 };
 
 function handleButtonClick(event) {
