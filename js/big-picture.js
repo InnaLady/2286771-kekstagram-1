@@ -1,4 +1,4 @@
-import './paint.js';
+
 import { createCommentsArray } from './data.js';
 import { isEscapeKey } from './util.js';
 
@@ -21,18 +21,14 @@ const appendComment = function () {
   comments.appendChild(commentsFragment);
 };
 
-appendComment();
-
 
 const modalBlock = document.querySelector('.big-picture');
 const block = document.querySelector('.big-picture__img');
-const picture = block.querySelector('img');
-const links = document.querySelectorAll('.picture');
+const image = block.querySelector('img');
 const cancel = document.querySelector('.big-picture__cancel');
 const likes = document.querySelector('.likes-count');
 const thumbnailsLikes = document.querySelectorAll('.picture__likes');
 const commentsCount = document.querySelector('.comments-count');
-const thumbnailsComments = document.querySelector('.picture__comments');
 const caption = document.querySelector('.social__caption');
 const comment = document.querySelectorAll('.social__comment');
 const more = document.querySelector('.comments-loader');
@@ -44,9 +40,12 @@ const onModalBlockKeydown = (evt) => {
     modalBlock.classList.add('hidden');
   }
 };
-const openUserModal = function () {
 
-  links.forEach((link) => {
+
+const openUserModal = function () {
+  const picture = document.querySelectorAll('.picture');
+  const thumbnailsComments = document.querySelector('.picture__comments');
+  picture.forEach((link) => {
     link.addEventListener('click', () => {
       for (let i = 5; i < comment.length; i++) {
         comment[i].classList.add('hidden');
@@ -56,7 +55,7 @@ const openUserModal = function () {
       modalBlock.classList.remove('hidden');
       document.body.classList.add('modal-open');
       const thumbnail = link.querySelector('.picture__img');
-      picture.src = thumbnail.src;
+      image.src = thumbnail.src;
       likes.textContent = thumbnailsLikes.textContent;
       commentsCount.textContent = thumbnailsComments.textContent;
       caption.textContent = thumbnail.alt;
@@ -91,5 +90,5 @@ more.addEventListener('click', () => {
 
 
 export { openUserModal };
-export { closeUserModal };
+export { closeUserModal, appendComment };
 

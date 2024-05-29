@@ -52,11 +52,10 @@ const debounce = (callback, timeoutDelay) => {
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
 };
-debounce();
 
 export {getRandomIntInclusive};
 export {getRandomIdfromRangeGenerator};
 export {isEscapeKey};
 export {showAlert };
-
+export {debounce};
 
