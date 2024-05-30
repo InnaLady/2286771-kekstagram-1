@@ -8,8 +8,8 @@ const isPalindrome = function (string) {
   }
   return 'Палиндром';
 };
-
-console.log(isPalindrome('Лёша на полке клопа нашёл '));
+isPalindrome();
+//console.log(isPalindrome('Лёша на полке клопа нашёл '));
 
 const isNumber = function (string) {
   let result = '';
@@ -27,7 +27,7 @@ const isNumber = function (string) {
 
 isNumber('а я томат');
 
-console.log(isNumber('а я томат'));
+//console.log(isNumber('а я томат'));
 
 
 const createNewString = function (originalString, minLength, additionalString) {
@@ -44,14 +44,14 @@ const createNewString = function (originalString, minLength, additionalString) {
     for (let i = newStringLength; i >= 1; i--) {
       newString = additionalString.slice(0, i) + newString;
     }
-    console.log(newString);
+    //console.log(newString);
   }
 
 };
 
 createNewString('q', 4, 'werty');
 
-console.log(createNewString('q', 4, 'werty'));
+//console.log(createNewString('q', 4, 'werty'));
 
 const checkLength = function (string, maxlength) {
   if (string.length <= maxlength) {
@@ -61,7 +61,7 @@ const checkLength = function (string, maxlength) {
 };
 checkLength('Кекстаграм12345678', 10);
 
-console.log(checkLength('Кекстаграм12345678', 10));
+//console.log(checkLength('Кекстаграм12345678', 10));
 
 
 const checkLengthTwo = function (string, maxlength) {
@@ -70,4 +70,4 @@ const checkLengthTwo = function (string, maxlength) {
 
 checkLengthTwo('Кекстаграм12345678', 10);
 
-console.log(checkLengthTwo('Кекстаграм12345678', 10));
+//console.log(checkLengthTwo('Кекстаграм12345678', 10));
