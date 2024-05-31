@@ -12,8 +12,9 @@ import { resetEffect } from './effects.js';
 resetEffect();
 import { getData } from './api.js';
 import { showAlert, debounce } from './util.js';
-const imgFilters = document.querySelector('.img-filters');
 import './preview.js';
+const imgFilters = document.querySelector('.img-filters');
+
 
 const RERENDER_DELAY = 2500;
 const debouncedImages = debounce(() => {

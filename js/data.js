@@ -1,7 +1,7 @@
 import { getRandomIntInclusive } from './util.js';
 import { getRandomIdfromRangeGenerator } from './util.js';
 
-const DESCRIPTION = [
+const DESCRIPTIONS = [
   'Волга',
   'Нева',
   'Лена',
@@ -60,13 +60,13 @@ const generateUrlId = getRandomIdfromRangeGenerator(1, 25);
 const generatePhotoId = getRandomIdfromRangeGenerator(1, 25);
 
 const createPhotoDescription = () => {
-  const randomDescriptionIndex = getRandomIntInclusive(0, DESCRIPTION.length - 1);
+  const randomDescriptionIndex = getRandomIntInclusive(0, DESCRIPTIONS.length - 1);
   const newArray = Array.from({ length: 6 }, createComments);
 
   return {
     id: generatePhotoId(),
     url: `photos/${generateUrlId()}.jpg`,
-    description: DESCRIPTION[randomDescriptionIndex],
+    description: DESCRIPTIONS[randomDescriptionIndex],
     likes: generateLikesId(),
     comments: newArray,
   };
